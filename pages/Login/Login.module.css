@@ -1,0 +1,140 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "century gothic";
+    font-weight: 300;
+    background: url("../../assets/img/backgroundLogin.png") no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  } 
+
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .login-box {
+    background: rgba(255, 255, 255, 0.183);
+    border-radius: 25px;
+    padding: 90px 216px;
+    width: 400px;
+    text-align: center;
+    backdrop-filter: blur(2px);
+  }
+  
+  .login-box h1, .login-box h2 {
+    margin: 0;
+    color: white;
+  }
+  
+  .login-box h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .login-box h2 {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    color: var(--white);
+    font-style: bold;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  form label {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    text-align: left;
+  }
+
+  form input::placeholder {
+    color: var(--white); 
+    opacity: 0.7; 
+  }
+  
+  form input:focus {
+    outline: none; 
+    box-shadow: none; 
+    border: none; 
+  }
+  
+  form input {
+    padding: 15px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 10px;
+    background: #ffffff30;
+    font-size: 1rem;
+    color: white;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .btn-create-account {
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+    transition: all 0.3s;
+  }
+  
+  .btn-login {
+    padding: 10px 100px;
+    background: white;
+    color: #008171;
+    transition: all 0.3s;
+  }
+  
+  /* .forgot-password {
+    font-size: 0.9rem;
+    color: #ddd;
+    text-decoration: none;
+    margin-bottom: 15px;
+  } */
+
+  .forgot-password {
+    display: block; 
+    margin-top: 5px; 
+    font-size: 0.9rem;
+    color: #fff;
+    text-align: left; 
+    padding-left: 0px;
+  }
+  
+  .forgot-password:hover {
+    text-decoration: underline;
+  }
+  
+  .checkbox-container {
+    display: flex;
+    gap: 5px; 
+    margin-bottom: 20px;
+}
+
+  .checkbox-container label {
+    margin-left: 5px;
+    font-size: 0.9rem;
+    color: white;
+  }
+  

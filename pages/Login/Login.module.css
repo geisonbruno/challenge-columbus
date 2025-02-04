@@ -20,12 +20,12 @@ body {
   }
   
   .login-box {
-    background: rgba(255, 255, 255, 0.183);
+    background: rgba(255, 255, 255, 0.064);
     border-radius: 25px;
     padding: 90px 216px;
     width: 400px;
     text-align: center;
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(3px);
   }
   
   .login-box h1, .login-box h2 {
@@ -75,7 +75,7 @@ body {
     border-radius: 10px;
     background: #ffffff30;
     font-size: 1rem;
-    color: white;
+    color: var(--white);
   }
   
   .button-container {
@@ -87,11 +87,25 @@ body {
   button {
     padding: 10px 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     font-size: 1rem;
     cursor: pointer;
   }
+
+  button:active {
+    transform: scale(0.90);
+  }  
   
+  .btn-create-account:hover {
+    background: white;
+    color: #008171;
+  }
+  
+  .btn-login:hover {
+    background: var(--secondary);
+    color: white;
+  }  
+
   .btn-create-account {
     background: transparent;
     color: white;
@@ -136,5 +150,61 @@ body {
     margin-left: 5px;
     font-size: 0.9rem;
     color: white;
+  }
+  
+  @media (max-width: 768px) {
+    body {
+      padding: 20px;
+      background-size: cover;
+    }
+  
+    .login-container {
+      flex-direction: column;
+      width: 100%;
+    }
+  
+    .login-box {
+      width: 90%;
+      max-width: 450px;
+      padding: 30px 25px 30px 25px;
+    }
+  
+    .login-box h1 {
+      font-size: 1.8rem;
+    }
+  
+    .login-box h2 {
+      font-size: 1.3rem;
+    }
+  
+    form input {
+      padding: 12px;
+      font-size: 0.9rem;
+    }
+  
+    .button-container {
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+    }
+  
+    .btn-login {
+      padding: 10px 50px;
+      width: 100%;
+    }
+  
+    .btn-create-account {
+      width: 100%;
+      text-align: center;
+    }
+  
+    .forgot-password {
+      text-align: center;
+      margin-top: 10px;
+    }
+  
+    .checkbox-container {
+      justify-content: center;
+    }
   }
   

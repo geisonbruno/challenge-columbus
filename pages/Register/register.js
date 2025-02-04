@@ -1,50 +1,55 @@
+import { saveUser, getUser } from '../../scripts/storage.js';
+import { showMessage } from '../../scripts/utils.js';
+
 document.querySelector('.btn-register').addEventListener('click', async (e) => {
     e.preventDefault();
-  
-    // Pegar valores dos campos
-    const nome = document.getElementById('nome').value;
-    const email = document.getElementById('email').value;
+
+    const nome = document.getElementById('nome').value.trim();
+    const email = document.getElementById('email').value.trim();
     const senha = document.getElementById('senha').value;
     const confirmSenha = document.getElementById('confirmed-password').value;
-  
-    // Verificar campos obrigatórios
+
     if (!nome || !email || !senha || !confirmSenha) {
-      alert('Por favor, preencha todos os campos.');
-      return;
+        showMessage('Por favor, preencha todos os campos.', 'error');
+        return;
     }
-  
-    // Validar formato do email
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      alert('Por favor, insira um email válido.');
-      return;
+        showMessage('Por favor, insira um email válido.', 'error');
+        return;
     }
-  
-    // Verificar se as senhas coincidem
+
     if (senha !== confirmSenha) {
-      alert('As senhas não coincidem!');
-      return;
+        showMessage('As senhas não coincidem!', 'error');
+        return;
     }
-  
+
+    const existingUser = getUser(email);
+    if (existingUser) {
+        showMessage('Este email já está cadastrado. Por favor, use outro.', 'error');
+        return;
+    }
+
     try {
-      // Criptografar a senha (requer bcrypt.js)
-      const hashedPassword = await bcrypt.hash(senha, 10);
-  
-      // Criar objeto do usuário
-      const user = {
-        nome: nome,
-        email: email,
-        senhaCriptografada: hashedPassword, // Salvar a senha criptografada
-      };
-  
-      // Salvar usuário no LocalStorage
-      localStorage.setItem(email, JSON.stringify(user));
-  
-      alert('Usuário cadastrado com sucesso!');
-      window.location.href = '../Login/login.html'; // Redirecionar para login
+        const hashedPassword = await bcrypt.hash(senha, 10);
+
+        const user = {
+            nome,
+            email,
+            senhaCriptografada: hashedPassword,
+        };
+
+        saveUser(user);
+
+        showMessage('Usuário cadastrado com sucesso!', 'success');
+        window.location.href = '../Login/login.html';
     } catch (error) {
-      alert('Erro ao cadastrar usuário. Tente novamente.');
-      console.error(error);
+        console.error('Erro ao registrar usuário:', error);
+        showMessage('Erro ao cadastrar usuário. Tente novamente.', 'error');
     }
-  });
-  
+});
+
+document.querySelector('.btn-have-account').addEventListener('click', () => {
+    window.location.href = '../Login/login.html'; 
+});

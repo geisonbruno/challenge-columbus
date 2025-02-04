@@ -1,10 +1,7 @@
 // Salva os dados do usuário no LocalStorage
-export function saveUser(email, hashedPassword) {
-    const user = {
-        email: email,
-        senhaCriptografada: hashedPassword,
-    };
-    localStorage.setItem(email, JSON.stringify(user));
+export function saveUser(user) {
+    const { email } = user; // Extrai o email do objeto do usuário
+    localStorage.setItem(email, JSON.stringify(user)); // Armazena o usuário inteiro no localStorage
 }
 
 // Recupera os dados de um usuário do LocalStorage

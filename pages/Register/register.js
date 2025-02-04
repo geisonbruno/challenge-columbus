@@ -1,4 +1,3 @@
-// Cadastrar o usuário
 document.querySelector('.btn-register').addEventListener('click', async (e) => {
     e.preventDefault();
   
@@ -14,7 +13,7 @@ document.querySelector('.btn-register').addEventListener('click', async (e) => {
       return;
     }
   
-    // Validar o formato do email
+    // Validar formato do email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       alert('Por favor, insira um email válido.');
@@ -27,19 +26,25 @@ document.querySelector('.btn-register').addEventListener('click', async (e) => {
       return;
     }
   
-    // Criptografar a senha (requer a biblioteca bcrypt.js)
-    const hashedPassword = await bcrypt.hash(senha, 10);
+    try {
+      // Criptografar a senha (requer bcrypt.js)
+      const hashedPassword = await bcrypt.hash(senha, 10);
   
-    // Salvar usuário no LocalStorage
-    const user = {
-      nome: nome,
-      email: email,
-      senhaCriptografada: hashedPassword,
-    };
+      // Criar objeto do usuário
+      const user = {
+        nome: nome,
+        email: email,
+        senhaCriptografada: hashedPassword, // Salvar a senha criptografada
+      };
   
-    localStorage.setItem(email, JSON.stringify(user));
+      // Salvar usuário no LocalStorage
+      localStorage.setItem(email, JSON.stringify(user));
   
-    alert('Usuário cadastrado com sucesso!');
-    window.location.href = '../Login/login.html';
+      alert('Usuário cadastrado com sucesso!');
+      window.location.href = '../Login/login.html'; // Redirecionar para login
+    } catch (error) {
+      alert('Erro ao cadastrar usuário. Tente novamente.');
+      console.error(error);
+    }
   });
   

@@ -1,6 +1,15 @@
 import { getUser } from '../../scripts/storage.js';
 import { showMessage } from '../../scripts/utils.js';
 
+async function hashPassword(password) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(password);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hashHex = hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+    return hashHex;
+}
+
 document.querySelector('.btn-login').addEventListener('click', async (e) => {
     e.preventDefault();
 
@@ -19,9 +28,9 @@ document.querySelector('.btn-login').addEventListener('click', async (e) => {
     }
 
     try {
-        const match = await bcrypt.compare(senha, savedUser.senhaCriptografada);
+        const hashedPassword = await hashPassword(senha);
 
-        if (match) {
+        if (hashedPassword === savedUser.senhaCriptografada) {
             showMessage('Login realizado com sucesso!', 'success');
             window.location.href = '../Dashboard/dashboard.html';
         } else {
@@ -34,5 +43,5 @@ document.querySelector('.btn-login').addEventListener('click', async (e) => {
 });
 
 document.querySelector('.btn-create-account').addEventListener('click', () => {
-    window.location.href = '../Register/register.html'; 
+    window.location.href = '../Register/register.html';
 });

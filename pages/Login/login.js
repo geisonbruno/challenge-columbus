@@ -1,6 +1,7 @@
 import { getUser } from '../../scripts/storage.js';
 import { showMessage } from '../../scripts/utils.js';
 
+// Função para gerar o hash da senha
 async function hashPassword(password) {
     const encoder = new TextEncoder();
     const data = encoder.encode(password);
@@ -32,7 +33,8 @@ document.querySelector('.btn-login').addEventListener('click', async (e) => {
 
         if (hashedPassword === savedUser.senhaCriptografada) {
             showMessage('Login realizado com sucesso!', 'success');
-            window.location.href = '../Dashboard/dashboard.html';
+            localStorage.setItem('loggedUser', email); // Salva o email no estado de login
+            window.location.href = '../Dashboard/dashboard.html'; // Redireciona para o Dashboard
         } else {
             showMessage('Senha incorreta!', 'error');
         }

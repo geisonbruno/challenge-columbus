@@ -33,8 +33,11 @@ document.querySelector('.btn-login').addEventListener('click', async (e) => {
 
         if (hashedPassword === savedUser.senhaCriptografada) {
             showMessage('Login realizado com sucesso!', 'success');
-            localStorage.setItem('loggedUser', email); // Salva o email no estado de login
-            window.location.href = '../Dashboard/dashboard.html'; // Redireciona para o Dashboard
+            localStorage.setItem('loggedUser', JSON.stringify({
+                name: savedUser.nome,  
+                email: email
+            }));
+            window.location.href = '../Dashboard/dashboard.html';
         } else {
             showMessage('Senha incorreta!', 'error');
         }

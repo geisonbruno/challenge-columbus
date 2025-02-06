@@ -1,145 +1,290 @@
-body {
-    margin: 0;
-    padding: 0;
-    font-family: "century gothic";
-    font-weight: 300;
-    background: url("../../assets/img/backgroundLogin.png") no-repeat center center fixed;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  } 
-  
-  .register-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-  }
-  
-  .register-box {
-    background: rgba(255, 255, 255, 0.064);
-    border-radius: 25px;
-    padding: 90px 216px;
-    width: 400px;
-    text-align: center;
-    backdrop-filter: blur(3px);
-  }
-  
-  .register-box h1, .register-box h2 {
-    margin: 10;
-    padding: 10;
-    color: var(--white);
-  }
-  
-  .login-box h1 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-  }
-  
-  .login-box h2 {
-    font-size: 1.5rem;
-    margin-bottom: 30px;
-    color: var(--white);
-    font-style: bold;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  form label {
-    font-size: 1rem;
-    margin-bottom: 5px;
-    text-align: left;
-  }
+/* Container principal */
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
 
-  form input::placeholder {
-    color: var(--white); 
-    opacity: 0.7; 
-  }
-  
-  form input:focus {
-    outline: none; 
-    box-shadow: none; 
-    border: none; 
-  }
-  
-  form input {
-    padding: 15px;
-    margin-bottom: 15px;
-    border: none;
-    border-radius: 10px;
-    background: #ffffff30;
-    font-size: 1rem;
-    color: var(--white);
-  }
-  
-  .button-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-  }
-  
-  button {
-    padding: 10px 20px;
-    border: none;
-    font-size: 1rem;
-    cursor: pointer;
-    border-radius: 10px;
-  }
+/* Barra Lateral */
+.sidebar {
+  position: fixed;
+  top: 20px;
+  left: 10px;
+  height: 95%; 
+  width: 80px; 
+  background: url("../../assets/img/backgroundLogin.png");
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  border-radius: 40px; /* Deixa as extremidades arredondadas */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Adiciona sombra */
+  overflow: hidden;
+}
 
-  button:active {
-    transform: scale(0.90);
-  }  
+.sidebar-header {
+  width: 60px;
+  height: 60px;
+  background-color: rgba(255, 255, 255, 0.2); /* Fundo transparente */
+  border: 2px solid white; /* Contorno branco */
+  border-radius: 50%; /* Forma circular */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px; /* Espaço abaixo do ícone */
+}
 
-  /* Animação dos botões, alterar a cor */
-  .btn-have-account:hover {
-    background: white;
-    color: #008171;
-  }
-  
-  .btn-register:hover {
-    background: var(--secondary);
-    color: white;
-  }  
-  /* -//- */
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Espaço entre os itens */
+}
 
-  .btn-have-account {
-    background: transparent;
-    color: white;
-    border: 1px solid white;
-    transition: all 0.3s;
-  }
-  
-  .btn-register {
-    padding: 10px 80px;
-    background: white;
-    color: #008171;
-    transition: all 0.3s;
-  }
+.sidebar-menu li {
+  margin: 15px 0;
+  display: flex;
+  justify-content: center;
+}
 
-  @media (max-width: 768px) {
-    .register-box {
-      padding: 25px 9px 25px 9px;
-      width: 90%;
-    }
-  
-    form input {
-      font-size: 0.9rem;
-    }
-  
-    .button-container {
-      flex-direction: column;
-      gap: 10px;
-    }
-  
-    button {
-      width: 100%;
-    }
-  }
-  
+.sidebar-menu a {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border: 2px solid white; 
+  border-radius: 50%; 
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.sidebar-menu a:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Fundo ao passar o mouse */
+  transform: scale(1.1); 
+}
+
+.material-icons {
+  font-size: 24px;
+}
+
+/* Conteúdo Principal */
+.main-content {
+  margin-left: 100px; 
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0);
+  flex-grow: 1;
+}
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  margin-left: 10px; 
+  margin-right: 3rem; 
+  padding: 5px; 
+  background-color: #f9f9f900; 
+  border-radius: 10px; 
+}
+
+
+.search-bar {
+  display: flex;
+  gap: 10px;
+}
+
+.search-bar input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  width: 300px;
+}
+
+.search-bar button {
+  padding: 10px 25px;
+  background-color: #008171;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+  background-color: #14b8a6;
+}
+
+/* Espaço Criativo */
+.creative-space {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: flex-start; 
+  gap: 4px;
+  padding: 2px; 
+}
+
+.result-card {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  width: 270px;
+  height: 200px;
+  text-align: left;
+  margin: 5px;
+}
+
+.result-card h5 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.result-card p {
+  margin: 12px 0;
+  font-size: 1rem;
+  color: var(--secondary);
+}
+
+.hidden {
+  display: none;
+}
+
+/* Estilo do modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.498);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  padding: 20px;
+  width: 400px; 
+  max-width: 25%; 
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25); 
+  position: relative; 
+}
+
+.close-button {
+  position: absolute; 
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: red;
+  border: none;
+}
+
+/* Estilo para o formulário */
+#add-delivery-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; 
+}
+
+#add-delivery-form label {
+  font-weight: bold;
+  text-align: left;
+}
+
+#add-delivery-form input,
+#add-delivery-form select,
+#add-delivery-form button {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+#add-delivery-form button {
+  background-color: #5ddabc;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.result-card[data-status="Entregue"] {
+  border-left: 8px solid #2dd4bf; /* Verde */
+}
+
+.result-card[data-status="Atrasada"] {
+  border-left: 8px solid #f87171; /* Vermelho */
+}
+
+.result-card[data-status="Em trânsito"] {
+  border-left: 8px solid #fbbf24; /* Amarelo */
+}
+
+.sort-buttons {
+  display: flex;
+  gap: 5px; /* Espaçamento entre os botões */
+}
+
+.sort-buttons button {
+  padding: 5px 10px;
+  background-color: #008171;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sort-buttons button:hover {
+  background-color: #179f93;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Ajustar a seção de relatórios */
+#reports-content {
+  padding: 20px;
+  margin-top: 10px;
+  margin-right: 50px;
+  background-color: #008171;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Cada linha do KPI */
+.kpi-row {
+  display: flex; /* Alinhar horizontalmente */
+  justify-content: space-between; /* Espaçar o título e o valor */
+  align-items: center; /* Centralizar verticalmente */
+  padding: 25px 15px;
+  margin-bottom: 20px; /* Espaço entre as linhas */
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  width: 100%; /* Ocupa toda a largura */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra leve */
+}
+
+/* Estilo para o título do KPI */
+.kpi-title {
+  font-weight: bold;
+  color: #333;
+}
+
+/* Estilo para o valor do KPI */
+.kpi-value {
+  color: #555;
+  font-weight: bold;
+}

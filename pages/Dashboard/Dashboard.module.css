@@ -94,8 +94,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-left: 10px;
-  margin-right: 4rem;
+  margin-left: 20px;
+  margin-right: 1rem;
   padding: 5px;
   background-color: #f9f9f900;
   border-radius: 10px;
@@ -107,10 +107,10 @@
 }
 
 .search-bar input {
-  padding: 10px;
+  padding: 14px;
   border: 1px solid #ccc;
   border-radius: 10px;
-  width: 300px;
+  width: 350px;
 }
 
 .search-bar button {
@@ -558,5 +558,97 @@
 
   .button-group button:active {
     transform: scale(0.98);
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1366px) {
+  /* Sidebar */
+  .sidebar {
+    width: 70px;
+    padding: 10px 0;
+  }
+
+  .sidebar-menu a {
+    width: 35px;
+    height: 35px;
+  }
+
+  /* Cards */
+  .creative-space {
+    display: grid; /* Layout em grid */
+    grid-template-columns: repeat(5, 1fr); /* 5 colunas */
+    gap: 15px; /* Espaçamento entre os cards */
+    padding: 5px;
+  }
+
+  .result-card {
+    width: 100%; /* Ocupar todo o espaço disponível na coluna */
+    height: auto; /* Ajustar altura automaticamente */
+  }
+
+  /* Barra de Pesquisa */
+  .search-bar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .search-bar input {
+    width: 60%; /* Reduzir a largura do campo de pesquisa */
+    max-width: 500px;
+    padding: 10px;
+  }
+
+  .search-bar button {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+
+  /* Títulos e Textos */
+  .main-header h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+
+  /* Modal */
+  .modal-content {
+    width: 80%;
+    max-width: 500px;
+  }
+
+  /* Relatórios */
+  #reports-content .charts-row {
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  #reports-content .chart-container {
+    flex: 1;
+    max-width: 45%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .creative-space {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 colunas para preencher */
+    gap: 15px; /* Espaçamento uniforme */
+    width: 100%; /* Garantir que use toda a largura */
+    max-width: 100%; /* Evita restrições */
+    margin: 0 auto; /* Centraliza os cards */
+    padding: 20px;
+  }
+
+  .result-card {
+    width: 100%; /* Faz com que cada card ocupe toda a coluna */
+    max-width: 100%;
+  }
+
+  .main-content {
+    width: calc(100% - 80px); /* Ajusta conforme a sidebar */
+    margin-left: 80px; /* Compensa o espaço da sidebar */
+    padding: 20px;
   }
 }

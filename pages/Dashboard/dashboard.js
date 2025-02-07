@@ -74,7 +74,7 @@ homeTab.addEventListener("click", () => {
 });
 
 // Dados fictícios para entregas
-const deliveries = [
+let deliveries = JSON.parse(localStorage.getItem("deliveries")) || [
   { id: "001", cliente: "Empresa A", status: "Entregue", destino: "São Paulo" },
   { id: "002", cliente: "Empresa B", status: "Atrasada", destino: "Nova York" },
   { id: "003", cliente: "Empresa C", status: "Entregue", destino: "Londres" },
@@ -83,99 +83,83 @@ const deliveries = [
     id: "005",
     cliente: "Empresa F",
     status: "Em trânsito",
-    destino: "Uruguai",
+    destino: "Amsterdam",
   },
   {
     id: "006",
-    cliente: "Empresa E",
+    cliente: "Empresa F",
     status: "Em trânsito",
-    destino: "Uruguai",
+    destino: "China",
   },
   {
     id: "007",
     cliente: "Empresa F",
     status: "Em trânsito",
-    destino: "Uruguai",
+    destino: "Brasilia",
   },
   {
     id: "008",
-    cliente: "Empresa G",
+    cliente: "Empresa F",
     status: "Em trânsito",
-    destino: "Uruguai",
+    destino: "Amazonas",
   },
   {
     id: "009",
-    cliente: "Empresa H",
+    cliente: "Empresa F",
     status: "Em trânsito",
-    destino: "Uruguai",
+    destino: "Argentina",
   },
   {
     id: "010",
-    cliente: "Empresa I",
+    cliente: "Empresa F",
     status: "Em trânsito",
-    destino: "Uruguai",
+    destino: "Campo Grande",
   },
   {
     id: "011",
-    cliente: "Empresa J",
+    cliente: "Empresa F",
     status: "Em trânsito",
-    destino: "Uruguai",
+    destino: "Mexico",
   },
   {
     id: "012",
-    cliente: "Empresa K",
+    cliente: "Empresa F",
     status: "Em trânsito",
-    destino: "Uruguai",
+    destino: "Chile",
   },
   {
     id: "013",
-    cliente: "Empresa L",
+    cliente: "Empresa F",
     status: "Em trânsito",
-    destino: "Uruguai",
+    destino: "Holanda",
   },
+
   {
     id: "014",
-    cliente: "Empresa M",
+    cliente: "Empresa F",
     status: "Em trânsito",
-    destino: "Uruguai",
+    destino: "Australia",
   },
+
   {
     id: "015",
-    cliente: "Empresa N",
-    status: "Em trânsito",
-    destino: "Uruguai",
-  },
-  {
-    id: "016",
     cliente: "Empresa O",
     status: "Em trânsito",
-    destino: "Uruguai",
+    destino: "Alemanha",
   },
-  {
-    id: "017",
-    cliente: "Empresa P",
-    status: "Em trânsito",
-    destino: "Uruguai",
-  },
-  {
-    id: "018",
-    cliente: "Empresa Q",
-    status: "Em trânsito",
-    destino: "Uruguai",
-  },
-  {
-    id: "019",
-    cliente: "Empresa R",
-    status: "Em trânsito",
-    destino: "Uruguai",
-  },
+  { id: "016", cliente: "Empresa D", status: "Entregue", destino: "Londres" },
+  { id: "017", cliente: "Empresa D", status: "Entregue", destino: "China" },
+  { id: "018", cliente: "Empresa D", status: "Entregue", destino: "Dubai" },
+  { id: "019", cliente: "Empresa D", status: "Entregue", destino: "Tailandia" },
   {
     id: "020",
-    cliente: "Empresa S",
-    status: "Em trânsito",
-    destino: "Uruguai",
+    cliente: "Empresa D",
+    status: "Entregue",
+    destino: "Estados unidos",
   },
 ];
+
+displayHome(deliveries);
 
 // Função para exibir os cards na Home
 function displayHome(deliveriesToShow = deliveries) {
@@ -519,15 +503,19 @@ document
     const status = document.getElementById("edit-delivery-status").value;
     const destino = document.getElementById("edit-delivery-destination").value;
 
-    const delivery = deliveries.find((d) => d.id === id);
-    if (delivery) {
-      delivery.cliente = cliente;
-      delivery.status = status;
-      delivery.destino = destino;
+    let deliveries = JSON.parse(localStorage.getItem("deliveries")) || [];
+
+    const index = deliveries.findIndex((d) => d.id === id);
+    if (index !== -1) {
+      deliveries[index].cliente = cliente;
+      deliveries[index].status = status;
+      deliveries[index].destino = destino;
     }
 
-    // Atualizar os cards e fechar o modal
-    displayHome();
+    localStorage.setItem("deliveries", JSON.stringify(deliveries));
+
+    displayHome(deliveries);
+
     document.getElementById("edit-delivery-modal").style.display = "none";
   });
 

@@ -108,7 +108,7 @@
 
 .search-bar input {
   padding: 14px;
-  border: 1px solid #ccc;
+  border: 2px solid var(--secondary);
   border-radius: 10px;
   width: 350px;
 }

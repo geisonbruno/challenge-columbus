@@ -20,8 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Garante que a barra de pesquisa está visível apenas na Home
-  searchBarContainer.style.display = "block"; // Mostra a barra ao carregar a Home
+  // Garante que a barra de pesquisa esteja visível apenas na Home
+  searchBarContainer.style.display = "block";
 
   reportsTab.addEventListener("click", () => {
     homeContent.classList.add("hidden");
@@ -61,8 +61,8 @@ reportsTab.addEventListener("click", () => {
   }
 
   // Criar ou atualizar os gráficos
-  renderChart(); // Gráfico de Pizza
-  renderClientBarChart(); // Gráfico de Barras
+  renderChart();
+  renderClientBarChart();
 });
 
 const homeTab = document.getElementById("home-tab");

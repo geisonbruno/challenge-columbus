@@ -12,6 +12,16 @@ O sistema possui funcionalidades para login, cadastro de usuários e visualizaç
 - [Como Usar](#-como-usar)
 - [Tecnologias Utilizadas](#-tecnologias-utilizadas)
 - [Funcionalidades](#️-funcionalidades)
+- [Demonstração em GIF](#-demonstração-em-gif)
+- [Captura de Tela Mobile](#-captura-de-tela-mobile)
+
+## 🌐 Demonstração em GIF
+
+![Demonstração do Sistema](assets/img/columbus.gif)
+
+## 📱 Captura de Tela (Mobile)
+
+![Captura de Tela Mobile](assets/img/mob.png)
 
 ## 💻 Instalação
 
